@@ -1,13 +1,13 @@
 ---
-  # - name: Launch EC2 Instance
-  #   hosts: localhost
-  #   connection: local
-  #   gather_facts: false
-  #   user: root
-  #   pre_tasks:
-  #   - include_vars: vars.yml
-  #   roles:
-  #   - provision-ec2
+  - name: Launch EC2 Instance
+    hosts: localhost
+    connection: local
+    gather_facts: false
+    user: root
+    pre_tasks:
+    - include_vars: vars.yml
+    roles:
+    - provision-ec2
 
   - name: Setup Haystack Stack
     hosts: etl_hosts
