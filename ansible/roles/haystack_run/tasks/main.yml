@@ -10,4 +10,7 @@
 - file: path=/data/chunks state=absent
 - file: path=/data/chunks state=directory mode=0777
 - shell: split -l 300000 /data/all.json /data/chunks/
-- shell: /data/haystack/run.sh {{ terms_uri }}
+- shell: ls -1 /data/chunks | tr '\n' '\0' | xargs -0 -n 1 basename
+  register: path_files
+- shell: nohup ruby /data/haystack/runner.rb -c {{ item }} -t {{ terms_uri }} &
+  with_items: path_files.stdout_lines

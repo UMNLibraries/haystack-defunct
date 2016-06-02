@@ -24,5 +24,4 @@
     vars:
       terms_uri: http://hub-client.lib.umn.edu/lookups/13.json
     sudo: no
-    roles:
     - haystack_run
