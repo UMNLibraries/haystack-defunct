@@ -1,0 +1,30 @@
+Error For record:  
+
+ --------------------- 
+
+ {"sourceResource":"bar"} 
+
+ --------------------- 
+
+ undefined method `fetch' for "bar":String 
+
+Error For record:  
+
+ --------------------- 
+
+ {"sourceResource":"bar"} 
+
+ --------------------- 
+
+ undefined method `fetch' for "bar":String 
+
+Error For record:  
+
+ --------------------- 
+
+ {"sourceResource":"bar"} 
+
+ --------------------- 
+
+ undefined method `fetch' for "bar":String 
+

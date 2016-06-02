@@ -1,0 +1,11 @@
+---
+  - file: path=/data state=directory mode=0755 group=ubuntu owner=ubuntu
+  - filesystem: fstype=ext4 dev=/dev/xvdb
+  - mount: name=/data src=/dev/xvdb fstype=ext4 state=mounted
+  - name: apt-get update
+    apt: update_cache=yes
+  - name: apt-get install git
+    apt: name="git"
+  - name: apt-get install htop
+    apt: name="htop"
+  - shell: gem install oj

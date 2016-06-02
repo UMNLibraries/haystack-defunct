@@ -1,0 +1,9 @@
+ec2_keypair: "mdletl"
+ec2_instance_type: "m4.large"
+ec2_security_group: "ec2etl"
+ec2_image: "ami-fce3c696"
+ec2_region: "us-east-1"
+ec2_tag_Name: "ETL"
+ec2_tag_Type: "ETL"
+ec2_tag_Environment: "production"
+ec2_volume_size: 150

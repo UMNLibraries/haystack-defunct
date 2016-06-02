@@ -1,0 +1,13 @@
+---
+- name: Clone DPLA Splitter
+  git: repo=https://github.com/UMNLibraries/haystack.git
+       dest=/data/haystack
+       accept_hostkey=yes
+       force=yes
+- shell: rm -f /data/all.json.gz
+- get_url: url=https://dpla-provider-export.s3.amazonaws.com/{{ ansible_date_time.year }}/{{ ansible_date_time.month }}/all.json.gz dest=/data/all.json.gz mode=0777
+- shell: gunzip --fast /data/all.json.gz
+- file: path=/data/chunks state=absent
+- file: path=/data/chunks state=directory mode=0777
+- shell: split -l 300000 /data/all.json /data/chunks/
+- shell: /data/haystack/run.sh {{ terms_uri }}
