@@ -8,4 +8,4 @@
     apt: name="git"
   - name: apt-get install htop
     apt: name="htop"
-  - shell: gem install oj
+  - shell: gem install oj rbtrace
