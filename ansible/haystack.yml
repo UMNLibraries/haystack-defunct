@@ -8,6 +8,16 @@
     - include_vars: vars.yml
     roles:
     - provision-ec2
+    vars:
+      ec2_keypair: "mdletl"
+      ec2_instance_type: "m4.large"
+      ec2_security_group: "haystack"
+      ec2_image: "ami-fce3c696"
+      ec2_region: "us-east-1"
+      ec2_tag_Name: "Haystack"
+      ec2_tag_Type: "Haystack"
+      ec2_tag_Environment: "production"
+      ec2_volume_size: 150
 
   - name: Setup Haystack Stack
     hosts: etl_hosts
@@ -23,6 +33,7 @@
     user: ubuntu
     vars:
       terms_uri: http://hub-client.lib.umn.edu/lookups/13.json
+      number_of_lines_per_chunk: 300000
     sudo: no
     roles:
     - haystack_run
