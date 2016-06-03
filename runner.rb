@@ -10,7 +10,7 @@ module Haystack
     end
 
     def finder
-      @finder ||= Haystack::FindInFile.new(origin_path: "../chunks/#{OPTIONS[:chunk]}", terms_uri: OPTIONS[:terms_uri])
+      @finder ||= Haystack::FindInFile.new(origin_path: "/data/chunks/#{OPTIONS[:chunk]}", terms_uri: OPTIONS[:terms_uri])
     end
   end
 end
