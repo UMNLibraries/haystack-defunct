@@ -8,11 +8,13 @@ Find DPLA records with regular expressions.
 * Create a security group with the following rules and name it "haystack"
 
 _Inbound_
+
 | Type | Protocol | Port Range | Source    |
 |------|----------|------------|-----------|
 | SSH  | TCP      | 22         | 0.0.0.0/0 |
 
 _Outbound_
+
 | Type | Protocol | Port Range | Source    |
 |------|----------|------------|-----------|
 | HTTP  | TCP      | 80         | 0.0.0.0/0 |
@@ -40,7 +42,6 @@ Note: Of special importance are the variables "vars" sections of each ansible pl
 $ cd haystack/ansible
 $ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -v -i localhost haystack.yml
 ```
-
 ## TODO
 
 * Copy /data/matched_records.json file down to local machine upon completion of ruby processes
