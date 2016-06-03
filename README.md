@@ -40,3 +40,9 @@ Note: Of special importance are the variables "vars" sections of each ansible pl
 $ cd haystack/ansible
 $ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -v -i localhost haystack.yml
 ```
+
+## TODO
+
+* Copy /data/matched_records.json file down to local machine upon completion of ruby processes
+* Add automatic EC2 instance tear-down when all ruby processes have completed
+* Notify configurable email address when instance tear-down has completed
