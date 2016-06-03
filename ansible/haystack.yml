@@ -4,8 +4,6 @@
     connection: local
     gather_facts: false
     user: root
-    pre_tasks:
-    - include_vars: vars.yml
     roles:
     - provision-ec2
     vars:
