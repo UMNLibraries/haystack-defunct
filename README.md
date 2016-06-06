@@ -32,9 +32,11 @@ _Outbound_
 ## Configuration
 
 * Configuration for haystack resides in the haystack ansible file: haystack/ansible/haystack.yml.
+Note: You'll probably want to run this script on a fairly large instance with many vCPUs, such as the m4.10xlarge (consult pricing first)
 * You will need a list of regular expressions serialized in JSON in the format shown [here]("http://hub-client.lib.umn.edu/lookups/13.json")
 ** (each expression is later joined with a pipe as boolean OR clauses)
 Note: Of special importance are the variables "vars" sections of each ansible play. Adjust these to your own needs.
+
 
 ## Run Haystack
 
