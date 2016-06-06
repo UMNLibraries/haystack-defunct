@@ -6,7 +6,7 @@ module Haystack
   class FindInFile
     attr_reader :origin_path, :matcher_klass, :terms_uri
 
-    def initialize(origin_path: "", matcher_klass: Haystack::Matcher, terms_uri: "http://hub-client.lib.umn.edu/lookups/13.json")
+    def initialize(origin_path: "", matcher_klass: Haystack::Matcher, terms_uri: "http://hub-client.lib.umn.edu/lookups/1.json")
       @origin_path   = origin_path
       @matcher_klass = matcher_klass
       @terms_uri     = URI(terms_uri)

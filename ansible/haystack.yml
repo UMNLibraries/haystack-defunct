@@ -30,7 +30,7 @@
     gather_facts: True
     user: ubuntu
     vars:
-      terms_uri: http://hub-client.lib.umn.edu/lookups/13.json
+      terms_uri: http://hub-client.lib.umn.edu/lookups/1.json
       number_of_lines_per_chunk: 300000
     sudo: no
     roles:
