@@ -2,7 +2,7 @@
 
 A configurable Ansible playbook and ruby script to split a [DPLA data dump](https://dp.la/info/developers/download/) into chunks and then find matches to a set of regular expressions.
 
-## What this thing does:
+## What this thing does
 
 * Launches an EC2 Instance and EBS volume (configurable in haystack.yml)
 * Allocates plenty of disk space to hold our data (configurable in haystack.yml)
