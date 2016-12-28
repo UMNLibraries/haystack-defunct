@@ -8,7 +8,7 @@
     - provision-ec2
     vars:
       ec2_keypair: "mdletl"
-      ec2_instance_type: "m4.large"
+      ec2_instance_type: "m4.10xlarge"
       ec2_security_group: "haystack"
       ec2_image: "ami-fce3c696"
       ec2_region: "us-east-1"
