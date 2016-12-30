@@ -5,7 +5,7 @@ module Haystack
   class Runner
     def run!
       finder.each_found do |record|
-        File.open('/data/matched_records.json', 'a') { |f| f.write(",#{record}\n") }
+        File.open('/data/matched_records.json', 'a') { |f| f.write("#{record}\n") }
       end
     end
 
