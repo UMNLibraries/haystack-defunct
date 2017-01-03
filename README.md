@@ -1,6 +1,16 @@
 # haystack
 
-Find DPLA records with regular expressions.
+A configurable Ansible playbook and ruby script to split a [DPLA data dump](https://dp.la/info/developers/download/) into chunks and then find matches to a set of regular expressions.
+
+## What this thing does
+
+* Launches an EC2 Instance and EBS volume (configurable in haystack.yml)
+* Allocates plenty of disk space to hold our data (configurable in haystack.yml)
+* Installs the core dependencies (Ruby, gems, etc)
+* Downloads a DPLA data dump (configurable in haystack.yml)
+* Splits this DPLA JSON file into chunks (chunk size configurable in haystack.yml)
+* Runs the ruby script that finds matches on each chunk based on a provided URL to a JSON file regex patterns (see provided example in haystack.yml for formatting)
+* Each script writes to a single file of matched records
 
 ## EC2 Setup
 
