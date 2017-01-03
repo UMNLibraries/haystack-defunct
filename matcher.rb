@@ -27,6 +27,7 @@ module Haystack
 
     def field_values
       data = []
+      data << record.fetch('originalRecord', {}).fetch('header', {}).fetch('setSpec', '')
       sourceResource = record.fetch('sourceResource', {})
       data << record.fetch('title', '')
       data << sourceResource.fetch('title', '')
