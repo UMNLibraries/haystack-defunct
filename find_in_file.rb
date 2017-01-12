@@ -24,7 +24,7 @@ module Haystack
     end
 
     def terms
-      @term_data ||= Oj.load(Net::HTTP.get_response(terms_uri).body).join('|')
+      @term_data ||= Oj.load(Net::HTTP.get_response(terms_uri).body)['pattern'].join('|')
     end
 
     def parse(record_string)
