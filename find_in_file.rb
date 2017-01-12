@@ -30,6 +30,8 @@ module Haystack
     def parse(record_string)
       json = format_line(record_string)
       (json != '') ? Oj.load(json)['_source'] : {}
+    rescue => e
+      File.open('./errors_json_parse.txt', 'a') { |file| file.write(record_string)}
     end
 
     def format_line(data)
