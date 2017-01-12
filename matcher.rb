@@ -3,7 +3,7 @@ module Haystack
     attr_reader :terms, :record
 
     def initialize(record: {}, terms: '')
-      @record = record
+      @record = (!record.is_a?(Hash)) ? {} : record
       @terms  = terms
     end
 
@@ -27,7 +27,7 @@ module Haystack
 
     def field_values
       data = []
-      data << record.fetch('originalRecord', {}).fetch('header', {}).fetch('setSpec', '')
+      data << !record.fetch('originalRecord', {}).is_a?(Hash) ? [] : record.fetch('originalRecord', {}).fetch('header', {}).fetch('setSpec', '')
       sourceResource = record.fetch('sourceResource', {})
       data << record.fetch('title', '')
       data << sourceResource.fetch('title', '')
@@ -38,8 +38,8 @@ module Haystack
       data << sourceResource.fetch('description', '')
       data.flatten.compact.map { |term| term.to_s.downcase.strip }.join(' ').strip
     rescue => e
-        err = "Error For record: #{record['id']} \n\n --------------------- \n\n #{Oj.dump(record)} \n\n --------------------- \n\n #{e}"
-        File.open('./errors.log', 'a') { |file| file.write("#{err} \n\n") }
+        err = "Error For record: \n\n #{Oj.dump(record)} \n\n --------------------- \n\n #{e}"
+        File.open('./errors_field_value.log', 'a') { |file| file.write("#{err} \n\n") }
     end
 
     def collection_values(sourceResource)
