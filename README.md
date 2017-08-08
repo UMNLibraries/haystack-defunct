@@ -50,12 +50,26 @@ Note: Of special importance are the variables "vars" sections of each ansible pl
 
 ## Run Haystack
 
-```
-$ cd haystack/ansible
-$ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -v -i localhost haystack.yml
-```
-## TODO
+The provision process happens in two phases:
 
-* Copy /data/matched_records.json file down to local machine upon completion of ruby processes
-* Add automatic EC2 instance tear-down when all ruby processes have completed
-* Notify configurable email address when instance tear-down has completed
+1) provision the machine
+
+```
+$ export HAYSTACK_AWS_ACCESS_KEY_ID=youridhere
+$ export HAYSTACK_AWS_SECRET_ACCESS_KEY=yourkeyhere
+$ cd haystack/ansible
+$ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -v -i localhost haystack-provision.yml --with-variables HAYSTACK_AWS_ACCESS_KEY_ID=${HAYSTACK_AWS_ACCESS_KEY_ID} HAYSTACK_AWS_SECRET_ACCESS_KEY=${HAYSTACK_AWS_SECRET_ACCESS_KEY}
+```
+
+2) Run haystack
+
+a) Find the URI to the EC2 instance that you just launched (available in the AWS EC2 console and via the CLI tool). Place that URI in the `inventory` file under `[ETL_HOSTS]` like:
+
+```
+[etl_hosts]
+21323423423blah.compute.aws.com
+```
+b) Run the haystack playbook
+```
+ ANSIBLE_HOST_KEY_CHECKING=False; private_key_file=~/.ssh/yourkeyhere.pem ansible-playbook -v -i inventory haystack.yml -v -c paramiko
+ ```
