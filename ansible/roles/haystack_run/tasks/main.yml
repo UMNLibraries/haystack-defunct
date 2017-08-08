@@ -5,7 +5,11 @@
        accept_hostkey=yes
        force=yes
 - shell: rm -f /data/all.json.gz
-- get_url: url=https://dpla-provider-export.s3.amazonaws.com/{{ ansible_date_time.year }}/{{ ansible_date_time.month }}/all.json.gz dest=/data/all.json.gz mode=0777
+- get_url:
+    url: "https://dpla-provider-export.s3.amazonaws.com/{{ ansible_date_time.year }}/{{ ansible_date_time.month }}/all.json.gz"
+    dest: "/data/all.json.gz"
+    mode: 0777
+    tmp_dest: "/data"
 - shell: gunzip --fast /data/all.json.gz
 - file: path=/data/chunks state=absent
 - file: path=/data/chunks state=directory mode=0777
@@ -13,4 +17,4 @@
 - shell: ls -1 /data/chunks | tr '\n' '\0' | xargs -0 -n 1 basename
   register: path_files
 - shell: nohup ruby /data/haystack/runner.rb -c {{ item }} -t {{ terms_uri }} &
-  with_items: path_files.stdout_lines
+  with_items: "{{ path_files.stdout_lines }}"

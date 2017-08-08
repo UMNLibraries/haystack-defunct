@@ -1,0 +1,20 @@
+---
+  - name: Launch EC2 Instance
+    hosts: localhost
+    connection: local
+    gather_facts: false
+    user: root
+    roles:
+    - provision-ec2
+    vars:
+      ec2_keypair: "dls2"
+      ec2_instance_type: "m4.10xlarge"
+      ec2_security_group: "haystack"
+      ec2_image: "ami-fce3c696"
+      ec2_region: "us-east-1"
+      ec2_tag_Name: "Haystack"
+      ec2_tag_Type: "Haystack"
+      ec2_tag_Environment: "production"
+      ec2_volume_size: 225
+      ec2_access_key: "{{ lookup('env', 'HAYSTACK_AWS_ACCESS_KEY_ID' }}"
+      ec2_secret_key: "{{ lookup('env', 'HAYSTACK_AWS_SECRET_ACCESS_KEY' }}"

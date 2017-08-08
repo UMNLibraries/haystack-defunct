@@ -1,0 +1,19 @@
+---
+  - name: Setup Haystack Stack
+    hosts: etl_hosts
+    gather_facts: True
+    user: ubuntu
+    sudo: yes
+    roles:
+    - haystack_setup
+
+  - name: Run Haystack
+    hosts: etl_hosts
+    gather_facts: True
+    user: ubuntu
+    vars:
+      terms_uri: http://hub-client.lib.umn.edu/lookups/33.json
+      number_of_lines_per_chunk: 300000
+    sudo: no
+    roles:
+    - haystack_run
